@@ -477,7 +477,7 @@
       animation: pulse 1.6s infinite;
     }
 
-    .tag-github {
+    .tag-local {
       background: rgba(255, 255, 255, 0.07);
       color: var(--text-muted);
     }
@@ -863,10 +863,10 @@
       card.innerHTML = `
         <div class="site-preview"></div>
         <div class="site-body">
-          <span class="site-tag ${isLive ? 'tag-live' : 'tag-github'}">${isLive ? 'LIVE' : 'GitHub'}</span>
+          <span class="site-tag ${isLive ? 'tag-live' : 'tag-local'}">${isLive ? 'LIVE' : 'Local'}</span>
           <h3 class="site-title">${site.title}</h3>
           <p class="site-desc">${site.desc}</p>
-          <a href="${site.url}" rel="noopener" class="btn btn-primary">${isLive ? 'Открыть' : 'Репозиторий'} ↗</a>
+          <a href="${site.url}" rel="noopener" class="btn btn-primary">Открыть ↗</a>
         </div>`;
 
       const preview = card.querySelector('.site-preview');
