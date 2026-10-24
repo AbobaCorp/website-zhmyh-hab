@@ -27,7 +27,7 @@ const SITES = [
     desc: 'Шутливый сайт в стиле National Geographic про редкий вид — ленивого студента. Есть мягкая и полная (без цензуры) версии.',
     url: 'sites/website-homo-studentus/index.html',
     type: 'local',
-    preview: 'previews/homo-studentus.jpg',
+    preview: 'sites/website-homo-studentus/preview/website_preview.jpg',
     emoji: '🦒',
     label: 'National Geographic',
     tint: '252, 191, 73',
