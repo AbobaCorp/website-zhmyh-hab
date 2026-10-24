@@ -47,7 +47,7 @@ const SITES = [
     desc: 'Классический wanted-постер. Руслан «Жирный…» Камазов разыскивается. Неоновые эффекты, тряска, печать и весь вайб 90-х.',
     url: 'sites/website-wanted/index.html',
     type: 'local',
-    preview: 'previews/wanted.jpg',
+    preview: 'sites/website-wanted/preview/website_preview.jpg',
     emoji: '🚨',
     label: 'Розыск',
     tint: '255, 90, 90',
