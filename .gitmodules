@@ -1,0 +1,3 @@
+[submodule "sites/website-homo-studentus"]
+	path = sites/website-homo-studentus
+	url = https://github.com/AbobaCorp/website-homo-studentus.git
