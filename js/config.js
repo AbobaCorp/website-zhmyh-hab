@@ -37,7 +37,7 @@ const SITES = [
     desc: 'Неоново-розовый шедевр. №1 фанат Аянами Рей + куриные эмодзи. Glitch-эффекты, радуга и максимальный хаос.',
     url: 'sites/website-ruslan-fat-site/index.html',
     type: 'local',
-    preview: 'previews/fat-site.jpg',
+    preview: 'sites/website-ruslan-fat-site/preview/website_preview.jpg',
     emoji: '🌸',
     label: 'Neon / Anime',
     tint: '255, 120, 200',
