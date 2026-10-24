@@ -25,7 +25,7 @@ const SITES = [
   {
     title: 'Homo Studentus Pomytus',
     desc: 'Шутливый сайт в стиле National Geographic про редкий вид — ленивого студента. Есть мягкая и полная (без цензуры) версии.',
-    url: 'https://github.com/AbobaCorp/website-homo-studentus',
+    url: 'sites/website-homo-studentus/index.html',
     type: 'local',
     preview: 'previews/homo-studentus.jpg',
     emoji: '🦒',
