@@ -35,7 +35,7 @@ const SITES = [
   {
     title: 'Ruslan Fat Site',
     desc: 'Неоново-розовый шедевр. №1 фанат Аянами Рей + куриные эмодзи. Glitch-эффекты, радуга и максимальный хаос.',
-    url: 'https://github.com/Z0sya/ruslan_fat_site',
+    url: 'sites/website-ruslan-fat-site/index.html',
     type: 'local',
     preview: 'previews/fat-site.jpg',
     emoji: '🌸',
