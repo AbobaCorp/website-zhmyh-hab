@@ -45,7 +45,7 @@ const SITES = [
   {
     title: 'Розыск №1',
     desc: 'Классический wanted-постер. Руслан «Жирный…» Камазов разыскивается. Неоновые эффекты, тряска, печать и весь вайб 90-х.',
-    url: 'https://github.com/AbobaCorp/wanted-site',
+    url: 'sites/website-wanted/index.html',
     type: 'local',
     preview: 'previews/wanted.jpg',
     emoji: '🚨',
