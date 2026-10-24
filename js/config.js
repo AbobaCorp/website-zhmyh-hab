@@ -4,7 +4,7 @@
    title    — название
    desc     — описание
    url      — ссылка
-   type     — 'live' (рабочий сайт) или 'github' (репозиторий)
+   type     — 'live' (рабочий сайт) или 'local' (репозиторий)
    preview  — путь к скриншоту, например 'previews/zhmykhagochi.jpg'
               (положи файл в папку previews/). Если файла нет — покажется смайлик.
    emoji    — смайлик-заглушка, пока нет скриншота
@@ -26,7 +26,7 @@ const SITES = [
     title: 'Homo Studentus Pomytus',
     desc: 'Шутливый сайт в стиле National Geographic про редкий вид — ленивого студента. Есть мягкая и полная (без цензуры) версии.',
     url: 'https://github.com/AbobaCorp/website-homo-studentus',
-    type: 'github',
+    type: 'local',
     preview: 'previews/homo-studentus.jpg',
     emoji: '🦒',
     label: 'National Geographic',
@@ -36,7 +36,7 @@ const SITES = [
     title: 'Ruslan Fat Site',
     desc: 'Неоново-розовый шедевр. №1 фанат Аянами Рей + куриные эмодзи. Glitch-эффекты, радуга и максимальный хаос.',
     url: 'https://github.com/Z0sya/ruslan_fat_site',
-    type: 'github',
+    type: 'local',
     preview: 'previews/fat-site.jpg',
     emoji: '🌸',
     label: 'Neon / Anime',
@@ -46,7 +46,7 @@ const SITES = [
     title: 'Розыск №1',
     desc: 'Классический wanted-постер. Руслан «Жирный…» Камазов разыскивается. Неоновые эффекты, тряска, печать и весь вайб 90-х.',
     url: 'https://github.com/AbobaCorp/wanted-site',
-    type: 'github',
+    type: 'local',
     preview: 'previews/wanted.jpg',
     emoji: '🚨',
     label: 'Розыск',
