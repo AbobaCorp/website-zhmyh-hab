@@ -1,3 +1,6 @@
 [submodule "sites/website-homo-studentus"]
 	path = sites/website-homo-studentus
 	url = https://github.com/AbobaCorp/website-homo-studentus.git
+[submodule "sites/website-ruslan-fat-site"]
+	path = sites/website-ruslan-fat-site
+	url = https://github.com/AbobaCorp/website-ruslan-fat-site.git
