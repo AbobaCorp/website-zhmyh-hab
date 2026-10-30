@@ -66,14 +66,14 @@ const SITES = [
 
 /* ---------- ФОТО ДЛЯ ГАЛЕРЕИ ----------*/
 const PHOTOS = [
-  { src: 'gallery/photo10.jpg', alt: '' },
-  { src: 'gallery/photo9.jpg', alt: '' },
-  { src: 'gallery/photo8.jpg', alt: '' },
-  { src: 'gallery/photo7.jpg', alt: '' },
-  { src: 'gallery/photo6.jpg', alt: '' },
-  { src: 'gallery/photo5.jpg', alt: '' },
-  { src: 'gallery/photo4.jpg', alt: '' },
-  { src: 'gallery/photo3.jpg', alt: '' },
-  { src: 'gallery/photo2.jpg', alt: '' },
-  { src: 'gallery/photo1.jpg', alt: '' },
+  { src: 'gallery/photo10.jpg', alt: 'Хаотичная битва носков и солдатиков' },
+  { src: 'gallery/photo9.jpg', alt: 'Руслан снова на парах (не FEDUK)' },
+  { src: 'gallery/photo8.jpg', alt: 'Легенда в адиках и очках на кровати' },
+  { src: 'gallery/photo7.jpg', alt: 'FEDUK-вайб с блондинкой и цепью' },
+  { src: 'gallery/photo6.jpg', alt: 'Рэпер с цепью «R» и взглядом в будущее' },
+  { src: 'gallery/photo5.jpg', alt: 'Селфи с языком и крошками на худи' },
+  { src: 'gallery/photo4.jpg', alt: 'Сегодня точно на пары… после KFC и Евы' },
+  { src: 'gallery/photo3.jpg', alt: 'В розыске: кличка Кабан, подайте на пиво' },
+  { src: 'gallery/photo2.jpg', alt: 'Подайте на пиво, Балтика на голове' },
+  { src: 'gallery/photo1.jpg', alt: 'Главный по шаверме с Балтикой 9' },
 ];
