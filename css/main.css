@@ -554,13 +554,49 @@ html[data-tab="gallery"] #gallery {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.35), transparent 45%);
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.78), transparent 65%);
     opacity: 0;
     transition: opacity 0.3s;
 }
 
 .gallery-item.filled:hover::after {
     opacity: 1;
+}
+
+.gallery-item .gallery-cap {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    padding: 0.8rem 0.9rem;
+    text-align: left;
+    font-size: 0.8rem;
+    font-weight: 500;
+    line-height: 1.3;
+    color: #fff;
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.7);
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.3s, transform 0.3s var(--ease);
+    pointer-events: none;
+}
+
+.gallery-item.filled:hover .gallery-cap,
+.gallery-item.filled:focus-visible .gallery-cap {
+    opacity: 1;
+    transform: none;
+}
+
+@media (hover: none) {
+    .gallery-item .gallery-cap {
+        display: none;
+    }
 }
 
 .gallery-note {
@@ -586,12 +622,25 @@ html[data-tab="gallery"] #gallery {
 }
 
 .lightbox {
+    --lb-side: 0.75rem;
     border: none;
     background: transparent;
-    max-width: 94vw;
-    max-height: 94vh;
-    margin: auto;
-    overflow: visible;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    max-height: none;
+    overflow: hidden;
+    color: #fff;
+    touch-action: none;
+    overscroll-behavior: contain;
+}
+
+.lightbox[open] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .lightbox::backdrop {
@@ -599,26 +648,117 @@ html[data-tab="gallery"] #gallery {
     backdrop-filter: blur(8px);
 }
 
+.lightbox-figure {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.7rem;
+}
+
 .lightbox img {
-    max-width: 94vw;
-    max-height: 88vh;
+    max-width: calc(100vw - 2 * var(--lb-side));
+    max-height: calc(100vh - 10rem);
+    max-height: calc(100dvh - 10rem);
     border-radius: 16px;
     display: block;
+    object-fit: contain;
     box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+.lightbox figcaption {
+    max-width: min(36rem, calc(100vw - 2 * var(--lb-side)));
+    text-align: center;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    color: #ece9f7;
+}
+
+.lightbox figcaption[hidden] {
+    display: none;
+}
+
+.lb-counter {
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+}
+
+.lightbox.single .lb-nav,
+.lightbox.single .lb-counter {
+    display: none;
 }
 
 .lightbox-close {
     position: absolute;
-    top: -14px;
-    right: -14px;
-    width: 38px;
-    height: 38px;
+    top: 0.75rem;
+    right: 0.75rem;
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
     border: 1px solid var(--border-strong);
     background: rgba(30, 28, 44, 0.95);
     color: #fff;
     font-size: 1.2rem;
     cursor: pointer;
+    z-index: 2;
+}
+
+.lb-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1px solid var(--border-strong);
+    background: rgba(30, 28, 44, 0.82);
+    color: #fff;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    z-index: 2;
+    transition: background 0.2s, border-color 0.2s, transform 0.2s var(--ease);
+}
+
+.lb-prev {
+    left: 0.5rem;
+}
+
+.lb-next {
+    right: 0.5rem;
+}
+
+.lb-nav:hover {
+    border-color: var(--accent-soft);
+    transform: translateY(-50%) scale(1.08);
+}
+
+.lb-nav:active {
+    transform: translateY(-50%) scale(0.96);
+}
+
+.lightbox-close:focus-visible,
+.lb-nav:focus-visible {
+    outline: 2px solid var(--accent-soft);
+    outline-offset: 2px;
+}
+
+@media (min-width: 700px) {
+    .lightbox {
+        --lb-side: 5rem;
+    }
+
+    .lb-prev {
+        left: 1.25rem;
+    }
+
+    .lb-next {
+        right: 1.25rem;
+    }
 }
 
 footer {

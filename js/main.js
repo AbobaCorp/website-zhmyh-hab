@@ -88,21 +88,61 @@ showSection(root.getAttribute('data-tab'));
 /* ====== ГАЛЕРЕЯ ====== */
 const grid = document.getElementById('galleryGrid');
 const lightbox = document.getElementById('lightbox');
-const lbImg = lightbox.querySelector('img');
+const lbImg = document.getElementById('lbImg');
+const lbCaption = document.getElementById('lbCaption');
+const lbCounter = document.getElementById('lbCounter');
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+let current = 0;
+let ignoreClickUntil = 0; // после свайпа гасим «случайный» клик, чтобы лайтбокс не закрылся
+
+function preload(i) {
+    const p = PHOTOS[(i + PHOTOS.length) % PHOTOS.length];
+    if (p) new Image().src = p.src;
+}
+
+// dir: 1 — следующее, -1 — предыдущее, 0 — без анимации (первое открытие)
+function showPhoto(index, dir = 0) {
+    const n = PHOTOS.length;
+    current = (index + n) % n;
+    const p = PHOTOS[current];
+
+    lbImg.src = p.src;
+    // alt показываем подписью, поэтому у самой картинки он пустой, чтобы скринридер не читал дважды
+    lbImg.alt = p.alt ? '' : 'Руслан';
+    lbCaption.textContent = p.alt || '';
+    lbCaption.hidden = !p.alt;
+    lbCounter.textContent = (current + 1) + ' / ' + n;
+
+    preload(current + 1);
+    preload(current - 1);
+
+    if (dir && !reduceMotion.matches && lbImg.animate) {
+        lbImg.animate(
+            [{ opacity: 0, transform: 'translateX(' + dir * 40 + 'px)' },
+            { opacity: 1, transform: 'none' }],
+            { duration: 260, easing: 'cubic-bezier(.22, 1, .36, 1)' }
+        );
+    }
+}
+
+const go = dir => { if (PHOTOS.length > 1) showPhoto(current + dir, dir); };
 
 if (PHOTOS.length) {
     document.getElementById('galleryNote').hidden = true;
-    PHOTOS.forEach(p => {
+    lightbox.classList.toggle('single', PHOTOS.length < 2);
+
+    PHOTOS.forEach((p, i) => {
         const item = document.createElement('button');
         item.type = 'button';
         item.className = 'gallery-item filled';
-        item.innerHTML = '<img loading="lazy">';
+        item.innerHTML = '<img loading="lazy"><span class="gallery-cap"></span>';
         const img = item.querySelector('img');
         img.src = p.src;
         img.alt = p.alt || 'Руслан';
+        item.querySelector('.gallery-cap').textContent = p.alt || '';
         item.addEventListener('click', () => {
-            lbImg.src = p.src;
-            lbImg.alt = p.alt || 'Руслан';
+            showPhoto(i);
             lightbox.showModal();
         });
         grid.appendChild(item);
@@ -116,4 +156,40 @@ if (PHOTOS.length) {
     }
 }
 
-lightbox.addEventListener('click', e => { if (e.target !== lbImg) lightbox.close(); });
+/* --- кнопки --- */
+lightbox.querySelector('.lb-prev').addEventListener('click', () => go(-1));
+lightbox.querySelector('.lb-next').addEventListener('click', () => go(1));
+
+/* --- клавиатура (Esc закрывает сам <dialog>) --- */
+lightbox.addEventListener('keydown', e => {
+    if (e.key === 'ArrowLeft') { e.preventDefault(); go(-1); }
+    else if (e.key === 'ArrowRight') { e.preventDefault(); go(1); }
+    else if (e.key === 'Home' && PHOTOS.length > 1) { e.preventDefault(); showPhoto(0, -1); }
+    else if (e.key === 'End' && PHOTOS.length > 1) { e.preventDefault(); showPhoto(PHOTOS.length - 1, 1); }
+});
+
+/* --- свайп (телефон / планшет, работает и мышью) --- */
+let sx = 0, sy = 0, tracking = false;
+lightbox.addEventListener('pointerdown', e => {
+    if (e.pointerType === 'mouse' && e.button !== 0) return;
+    if (e.target.closest('.lb-nav, .lightbox-close')) return;
+    sx = e.clientX; sy = e.clientY; tracking = true;
+});
+lightbox.addEventListener('pointerup', e => {
+    if (!tracking) return;
+    tracking = false;
+    const dx = e.clientX - sx, dy = e.clientY - sy;
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) {
+        ignoreClickUntil = Date.now() + 400;
+        go(dx < 0 ? 1 : -1);
+    }
+});
+lightbox.addEventListener('pointercancel', () => { tracking = false; });
+
+/* --- закрытие: крестик или клик по затемнённому фону --- */
+lightbox.addEventListener('click', e => {
+    if (Date.now() < ignoreClickUntil) return;
+    if (e.target.closest('.lightbox-close')) { lightbox.close(); return; }
+    if (e.target.closest('.lb-nav, img, figcaption, .lb-counter')) return;
+    lightbox.close();
+});

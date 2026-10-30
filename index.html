@@ -97,9 +97,25 @@
     <p class="small">Все сайты созданы ради мемов. Руслан — легенда.</p>
   </footer>
 
-  <dialog class="lightbox" id="lightbox">
+  <dialog class="lightbox" id="lightbox" aria-label="Просмотр фото">
     <button class="lightbox-close" type="button" aria-label="Закрыть">✕</button>
-    <img alt="">
+    <button class="lb-nav lb-prev" type="button" aria-label="Предыдущее фото">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5"
+        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M15 5l-7 7 7 7" />
+      </svg>
+    </button>
+    <figure class="lightbox-figure">
+      <img id="lbImg" alt="" draggable="false">
+      <figcaption id="lbCaption" aria-live="polite"></figcaption>
+      <div class="lb-counter" id="lbCounter"></div>
+    </figure>
+    <button class="lb-nav lb-next" type="button" aria-label="Следующее фото">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5"
+        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M9 5l7 7-7 7" />
+      </svg>
+    </button>
   </dialog>
 
   <script src="js/config.js"></script>
