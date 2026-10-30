@@ -35,7 +35,7 @@ SITES.forEach(site => {
           <span class="site-tag ${isLive ? 'tag-live' : 'tag-local'}">${isLive ? 'LIVE' : 'Local'}</span>
           <h3 class="site-title">${site.title}</h3>
           <p class="site-desc">${site.desc}</p>
-          <a href="${site.url}" rel="noopener" class="btn btn-primary">Открыть ↗</a>
+          <a href="${site.url}" ${isLive ? 'target="_blank" rel="noopener"' : ''} class="btn btn-primary">Открыть ↗</a>
         </div>`;
 
     const preview = card.querySelector('.site-preview');
