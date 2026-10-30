@@ -13,6 +13,16 @@
 */
 const SITES = [
   {
+    title: 'Руслан Камазов Records',
+    desc: 'Официальный сайт рэп-артиста с дискографией прогулов, туром «Где ты?» и мерчем со справками.',
+    url: 'sites/website-ruslan-records/index.html',
+    type: 'local',
+    preview: 'sites/website-ruslan-records/preview/website_preview.jpg',
+    emoji: '🎤',
+    label: 'Рэп-лейбл',
+    tint: '111, 208, 255',
+  },
+  {
     title: 'ЖМЫХАГОЧИ',
     desc: 'Симулятор ответственного студента. Корми, укладывай, надейся… пока ещё числится. Тамагочи с академическим долгом.',
     url: 'https://zhmykhagochi.run.place/',
