@@ -22,7 +22,18 @@ function loadPreview(path, onFound) {
 }
 
 const sitesGrid = document.getElementById('sitesGrid');
+
+function plural(n, forms) {
+    n = Math.abs(n) % 100;
+    const n1 = n % 10;
+    if (n > 10 && n < 20) return forms[2];
+    if (n1 > 1 && n1 < 5) return forms[1];
+    if (n1 === 1) return forms[0];
+    return forms[2];
+}
+
 document.getElementById('siteCount').textContent = SITES.length;
+document.getElementById('siteLabel').textContent = plural(SITES.length, ['сайт', 'сайта', 'сайтов']);
 
 SITES.forEach(site => {
     const card = document.createElement('article');
