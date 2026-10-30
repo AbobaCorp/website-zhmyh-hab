@@ -66,5 +66,14 @@ const SITES = [
 
 /* ---------- ФОТО ДЛЯ ГАЛЕРЕИ ----------*/
 const PHOTOS = [
-  // { src: 'gallery/ruslan1.jpg', alt: 'Руслан' },
+  { src: 'gallery/photo10.jpg', alt: '' },
+  { src: 'gallery/photo9.jpg', alt: '' },
+  { src: 'gallery/photo8.jpg', alt: '' },
+  { src: 'gallery/photo7.jpg', alt: '' },
+  { src: 'gallery/photo6.jpg', alt: '' },
+  { src: 'gallery/photo5.jpg', alt: '' },
+  { src: 'gallery/photo4.jpg', alt: '' },
+  { src: 'gallery/photo3.jpg', alt: '' },
+  { src: 'gallery/photo2.jpg', alt: '' },
+  { src: 'gallery/photo1.jpg', alt: '' },
 ];
