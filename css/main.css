@@ -34,7 +34,6 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
-/* Мягкие цветные пятна на фоне */
 .bg-glow {
     position: fixed;
     inset: 0;
