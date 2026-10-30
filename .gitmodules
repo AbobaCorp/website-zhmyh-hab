@@ -7,3 +7,6 @@
 [submodule "sites/website-wanted"]
 	path = sites/website-wanted
 	url = https://github.com/AbobaCorp/website-wanted.git
+[submodule "sites/website-ruslan-records"]
+	path = sites/website-ruslan-records
+	url = https://github.com/AbobaCorp/website-ruslan-records.git
