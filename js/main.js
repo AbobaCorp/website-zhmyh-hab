@@ -32,8 +32,10 @@ function plural(n, forms) {
     return forms[2];
 }
 
-document.getElementById('siteCount').textContent = SITES.length;
-document.getElementById('siteLabel').textContent = plural(SITES.length, ['сайт', 'сайта', 'сайтов']);
+// В счётчик попадают только готовые сайты — «скоро» не считаются
+const readyCount = SITES.filter(s => s.type !== 'soon').length;
+document.getElementById('siteCount').textContent = readyCount;
+document.getElementById('siteLabel').textContent = plural(readyCount, ['сайт', 'сайта', 'сайтов']);
 
 SITES.forEach(site => {
     const card = document.createElement('article');
