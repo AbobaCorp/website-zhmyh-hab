@@ -55,7 +55,7 @@ SITES.forEach(site => {
           ${pct === null ? '' : `
           <div class="progress" role="progressbar" aria-label="Готовность сайта"
                aria-valuemin="0" aria-valuemax="100" aria-valuenow="${pct}">
-            <div class="progress-top"><span>В разработке</span><b>${pct}%</b></div>
+            <div class="progress-top"><span>Прогресс</span><b>${pct}%</b></div>
             <div class="progress-track"><i style="width:${pct}%"></i></div>
           </div>`}
           <span class="btn btn-disabled" aria-disabled="true">🔒 ${site.date ? 'Премьера: ' + site.date : 'Скоро премьера'}</span>`;

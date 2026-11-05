@@ -894,7 +894,7 @@ footer .small {
 }
 
 .is-soon .site-preview::after {
-    content: 'Скоро премьера';
+    content: 'Сайт в разработке';
     position: absolute;
     z-index: 2;
     left: 50%;
