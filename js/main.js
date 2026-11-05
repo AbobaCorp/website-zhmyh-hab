@@ -40,13 +40,34 @@ SITES.forEach(site => {
     card.className = 'site-card';
     card.style.setProperty('--tint', site.tint || '255, 77, 125');
     const isLive = site.type === 'live';
+    const isSoon = site.type === 'soon';
+    card.classList.toggle('is-soon', isSoon);
+
+    const tagClass = isSoon ? 'tag-soon' : isLive ? 'tag-live' : 'tag-local';
+    const tagText = isSoon ? 'Скоро' : isLive ? 'LIVE' : 'Local';
+
+    let actionHTML;
+    if (isSoon) {
+        const pct = Number.isFinite(site.progress) ? Math.max(0, Math.min(100, site.progress)) : null;
+        actionHTML = `
+          ${pct === null ? '' : `
+          <div class="progress" role="progressbar" aria-label="Готовность сайта"
+               aria-valuemin="0" aria-valuemax="100" aria-valuenow="${pct}">
+            <div class="progress-top"><span>В разработке</span><b>${pct}%</b></div>
+            <div class="progress-track"><i style="width:${pct}%"></i></div>
+          </div>`}
+          <span class="btn btn-disabled" aria-disabled="true">🔒 ${site.date ? 'Премьера: ' + site.date : 'Скоро премьера'}</span>`;
+    } else {
+        actionHTML = `<a href="${site.url}" ${isLive ? 'target="_blank" rel="noopener"' : ''} class="btn btn-primary">Открыть ${isLive ? '↗' : ''}</a>`;
+    }
+
     card.innerHTML = `
         <div class="site-preview"></div>
         <div class="site-body">
-          <span class="site-tag ${isLive ? 'tag-live' : 'tag-local'}">${isLive ? 'LIVE' : 'Local'}</span>
+          <span class="site-tag ${tagClass}">${tagText}</span>
           <h3 class="site-title">${site.title}</h3>
           <p class="site-desc">${site.desc}</p>
-          <a href="${site.url}" ${isLive ? 'target="_blank" rel="noopener"' : ''} class="btn btn-primary">Открыть ${isLive ? '↗' : ''}</a>
+          ${actionHTML}
         </div>`;
 
     const preview = card.querySelector('.site-preview');

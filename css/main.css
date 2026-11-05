@@ -442,6 +442,20 @@ html[data-tab="gallery"] #gallery {
     color: var(--text-muted);
 }
 
+.tag-soon {
+    background: rgba(252, 211, 77, 0.14);
+    color: var(--sun);
+}
+
+.tag-soon::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+    animation: pulse 1.6s infinite;
+}
+
 .site-title {
     font-family: 'Unbounded', sans-serif;
     font-weight: 700;
@@ -840,4 +854,107 @@ footer .small {
         animation: none !important;
         transition: none !important;
     }
+}
+
+.site-card.is-soon {
+    border-style: dashed;
+    border-color: rgba(252, 211, 77, 0.3);
+}
+
+.site-card.is-soon:hover {
+    transform: translateY(-3px);
+    border-color: rgba(252, 211, 77, 0.55);
+    box-shadow: 0 20px 44px rgba(0, 0, 0, 0.4), 0 0 40px rgba(252, 211, 77, 0.12);
+}
+
+.is-soon .site-preview img {
+    filter: blur(7px) grayscale(0.55) brightness(0.7);
+    transform: scale(1.12);
+}
+
+.site-card.is-soon:hover .site-preview img {
+    transform: scale(1.16);
+}
+
+.is-soon .preview-emoji {
+    filter: grayscale(0.4) drop-shadow(0 8px 18px rgba(var(--tint), 0.5));
+}
+
+.is-soon .site-preview::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(-45deg,
+            rgba(252, 211, 77, 0.07) 0 14px,
+            transparent 14px 28px);
+    background-size: 40px 40px;
+    animation: stripes 2.5s linear infinite;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.is-soon .site-preview::after {
+    content: 'Скоро премьера';
+    position: absolute;
+    z-index: 2;
+    left: 50%;
+    bottom: 14px;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    font: 600 0.72rem 'Rubik', sans-serif;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--sun);
+    background: rgba(12, 11, 18, 0.82);
+    border: 1px solid rgba(252, 211, 77, 0.4);
+    padding: 6px 14px;
+    border-radius: 100px;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+}
+
+@keyframes stripes {
+    to {
+        background-position: 40px 0;
+    }
+}
+
+.progress {
+    margin-bottom: 0.9rem;
+}
+
+.progress-top {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.76rem;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+}
+
+.progress-top b {
+    color: var(--sun);
+    font-weight: 600;
+}
+
+.progress-track {
+    height: 6px;
+    border-radius: 100px;
+    background: rgba(255, 255, 255, 0.08);
+    overflow: hidden;
+}
+
+.progress-track i {
+    display: block;
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, #f59e0b, var(--sun));
+    box-shadow: 0 0 12px rgba(252, 211, 77, 0.5);
+}
+
+.btn-disabled {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px dashed rgba(252, 211, 77, 0.35);
+    color: var(--sun);
+    cursor: not-allowed;
+    user-select: none;
 }
