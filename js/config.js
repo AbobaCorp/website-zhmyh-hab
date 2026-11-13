@@ -24,7 +24,7 @@ const SITES = [
     desc: 'Онлайн-игра в пазл: собери по кусочкам четыре фото Руслана. Готовой картинки нет, зато есть повороты, таймер и финальный босс.',
     url: 'sites/website-lazy-puzzle/index.html',
     type: 'local',
-    // preview: 'sites/website-lazy-puzzle/',
+    preview: 'sites/website-lazy-puzzle/preview/website_preview.jpg',
     emoji: '🧩',
     label: 'Пазл-игра',
     tint: '167, 139, 250',
