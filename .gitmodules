@@ -10,3 +10,6 @@
 [submodule "sites/website-ruslan-records"]
 	path = sites/website-ruslan-records
 	url = https://github.com/AbobaCorp/website-ruslan-records.git
+[submodule "sites/website-lazy-puzzle"]
+	path = sites/website-lazy-puzzle
+	url = https://github.com/AbobaCorp/website-lazy-puzzle.git
